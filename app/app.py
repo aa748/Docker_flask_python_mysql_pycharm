@@ -3,11 +3,9 @@ import simplejson as json
 from flask import Flask, request, Response, redirect
 from flask import render_template
 from flaskext.mysql import MySQL
-from  pymysql.cursors import DictCursor
-
+from pymysql.cursors import DictCursor
 
 app = Flask(__name__)
-
 mysql = MySQL(cursorclass=DictCursor)
 
 app.config['MYSQL_DATABASE_HOST'] = 'db'
@@ -116,6 +114,7 @@ def api_edit(city_id) -> str:
 def api_delete(city_id) -> str:
     resp = Response(status=210, mimetype='application/json')
     return resp
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)

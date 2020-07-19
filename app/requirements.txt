@@ -1,4 +1,3 @@
 Flask
 flask-mysql
 simplejson
-pymysql
