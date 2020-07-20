@@ -10,11 +10,11 @@
     </tr>
     </thead>
     <tbody>
-    {% for city in cities %}
+    {% for person in people %}
     <tr>
-        <td><a href="view/{{city.id}}">{{ city.fldName }}</a></td>
-        <td>{{ city.fldLat }}</td>
-        <td>{{ city.fldLong }}</td>
+        <td><a href="view/{{person.id}}">{{ person.fldName }}</a></td>
+        <td>{{ person.fldLat }}</td>
+        <td>{{ person.fldLong }}</td>
 
 
     </tr>
