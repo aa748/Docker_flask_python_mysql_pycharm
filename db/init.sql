@@ -3,13 +3,13 @@ use citiesData;
 
 CREATE TABLE IF NOT EXISTS tblCitiesImport (
     `id` int AUTO_INCREMENT,
-    `fldName` VARCHAR(21) CHARACTER SET utf8,
-    `fldLat` NUMERIC(6, 4),
-    `fldLong` NUMERIC(7, 4),
+    `person_num` VARCHAR(21) CHARACTER SET utf8,
+    `Height` NUMERIC(6, 4),
+    `Weight` NUMERIC(7, 4),
 
     PRIMARY KEY (`id`)
 );
-INSERT INTO tblCitiesImport (fldName,fldLat,fldLong) VALUES
+INSERT INTO tblCitiesImport (person_num, height, weight) VALUES
     (1, 65.78, 112.99),
     (2, 71.52, 136.49),
     (3, 69.40, 153.03),
