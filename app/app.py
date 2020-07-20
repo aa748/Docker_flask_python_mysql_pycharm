@@ -25,12 +25,12 @@ def index():
     return render_template('index.html', title='Home', user=user, people=result)
 
 
-@app.route('/view/<int:city_id>', methods=['GET'])
-def record_view(city_id):
+@app.route('/view/<int:person_num>', methods=['GET'])
+def record_view(person_num):
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblCitiesImport WHERE id=%s', city_id)
+    cursor.execute('SELECT * FROM tblCitiesImport WHERE id=%s', person_num)
     result = cursor.fetchall()
-    return render_template('view.html', title='View Form', city=result[0])
+    return render_template('view.html', title='View Form', person=result[0])
 
 
 @app.route('/edit/<int:city_id>', methods=['GET'])
