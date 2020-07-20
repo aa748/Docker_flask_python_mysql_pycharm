@@ -1,7 +1,7 @@
-CREATE DATABASE citiesData;
-use citiesData;
+CREATE DATABASE peopleData;
+use peopleData;
 
-CREATE TABLE IF NOT EXISTS tblCitiesImport (
+CREATE TABLE IF NOT EXISTS tblPeopleImport (
     `id` int AUTO_INCREMENT,
     `person_num` VARCHAR(21) CHARACTER SET utf8,
     `Height` NUMERIC(6, 4),
@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS tblCitiesImport (
 
     PRIMARY KEY (`id`)
 );
-INSERT INTO tblCitiesImport (person_num, height, weight) VALUES
+INSERT INTO tblPeopleImport (person_num, height, weight) VALUES
     (1, 65.78, 112.99),
     (2, 71.52, 136.49),
     (3, 69.40, 153.03),

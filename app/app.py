@@ -12,7 +12,7 @@ app.config['MYSQL_DATABASE_HOST'] = 'db'
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
 app.config['MYSQL_DATABASE_PORT'] = 3306
-app.config['MYSQL_DATABASE_DB'] = 'citiesData'
+app.config['MYSQL_DATABASE_DB'] = 'peopleData'
 mysql.init_app(app)
 
 
@@ -20,7 +20,7 @@ mysql.init_app(app)
 def index():
     user = {'username': 'Mike'}
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblCitiesImport')
+    cursor.execute('SELECT * FROM tblPeopleImport')
     result = cursor.fetchall()
     return render_template('index.html', title='Home', user=user, people=result)
 
@@ -28,7 +28,7 @@ def index():
 @app.route('/view/<int:person_num>', methods=['GET'])
 def record_view(person_num):
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblCitiesImport WHERE id=%s', person_num)
+    cursor.execute('SELECT * FROM tblPeopleImport WHERE id=%s', person_num)
     result = cursor.fetchall()
     return render_template('view.html', title='View Form', person=result[0])
 
