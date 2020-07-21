@@ -66,10 +66,10 @@ def form_insert_post():
     return redirect("/", code=302)
 
 @app.route('/delete/<int:person_num>', methods=['POST'])
-def form_delete_post(city_id):
+def form_delete_post(person_num):
     cursor = mysql.get_db().cursor()
-    sql_delete_query = """DELETE FROM tblCitiesImport WHERE id = %s """
-    cursor.execute(sql_delete_query, city_id)
+    sql_delete_query = """DELETE FROM tblPeopleImport WHERE id = %s """
+    cursor.execute(sql_delete_query, person_num)
     mysql.get_db().commit()
     return redirect("/", code=302)
 

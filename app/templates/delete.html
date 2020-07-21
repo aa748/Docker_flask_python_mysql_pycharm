@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<form action="/delete/{{person.id}}" method="post">
+    <div class="row">
+        <div class="col">
+            <label for="person_num">Person #</label>
+            <input id="person_num" type="text" class="form-control" placeholder="Person Number" name="person_num" value="{{person.person_num}}">
+        </div>
+        <div class="col">
+            <label for="height">Height</label>
+            <input id="height" type="text" class="form-control" placeholder="Height"
+                   name="height" value="{{person.height}}">
+        </div>
+        <div class="col">
+            <label for="weight">Weight</label>
+            <input id="weight" type="text" class="form-control" placeholder="weight" name="weight" value="{{person.weight}}">
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-success">Save</button>
+
+</form>
+{% endblock %}
