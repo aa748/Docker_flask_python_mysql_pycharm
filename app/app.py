@@ -74,40 +74,40 @@ def form_delete_post(person_num):
     return redirect("/", code=302)
 
 
-@app.route('/api/v1/cities', methods=['GET'])
+@app.route('/api/persons', methods=['GET'])
 def api_browse() -> str:
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblCitiesImport')
+    cursor.execute('SELECT * FROM tblPeopleImport')
     result = cursor.fetchall()
     json_result = json.dumps(result);
     resp = Response(json_result, status=200, mimetype='application/json')
     return resp
 
 
-@app.route('/api/v1/cities/<int:city_id>', methods=['GET'])
-def api_retrieve(city_id) -> str:
+@app.route('/api/persons/<int:person_num>', methods=['GET'])
+def api_retrieve(person_num) -> str:
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblCitiesImport WHERE id=%s', city_id)
+    cursor.execute('SELECT * FROM tblPeopleImport WHERE id=%s', person_num)
     result = cursor.fetchall()
     json_result = json.dumps(result);
     resp = Response(json_result, status=200, mimetype='application/json')
     return resp
 
 
-@app.route('/api/v1/cities/', methods=['POST'])
+@app.route('/api/persons/', methods=['POST'])
 def api_add() -> str:
     resp = Response(status=201, mimetype='application/json')
     return resp
 
 
-@app.route('/api/v1/cities/<int:city_id>', methods=['PUT'])
+@app.route('/api/persons/<int:person_num>', methods=['PUT'])
 def api_edit(city_id) -> str:
     resp = Response(status=201, mimetype='application/json')
     return resp
 
 
-@app.route('/api/cities/<int:city_id>', methods=['DELETE'])
-def api_delete(city_id) -> str:
+@app.route('/api/persons/<int:person_num>', methods=['DELETE'])
+def api_delete(person_num) -> str:
     resp = Response(status=210, mimetype='application/json')
     return resp
 
