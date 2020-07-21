@@ -87,7 +87,7 @@ def api_browse() -> str:
 @app.route('/api/persons/<int:person_num>', methods=['GET'])
 def api_retrieve(person_num) -> str:
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblPeopleImport WHERE id=%s', person_num)
+    cursor.execute('SELECT * FROM tblPeopleImport WHERE person_num=%s', person_num)
     result = cursor.fetchall()
     json_result = json.dumps(result);
     resp = Response(json_result, status=200, mimetype='application/json')
