@@ -51,23 +51,21 @@ def form_update_post(person_num):
     mysql.get_db().commit()
     return redirect("/", code=302)
 
-@app.route('/cities/new', methods=['GET'])
+@app.route('/person/new', methods=['GET'])
 def form_insert_get():
     return render_template('new.html', title='New City Form')
 
 
-@app.route('/cities/new', methods=['POST'])
+@app.route('/person/new', methods=['POST'])
 def form_insert_post():
     cursor = mysql.get_db().cursor()
-    inputData = (request.form.get('fldName'), request.form.get('fldLat'), request.form.get('fldLong'),
-                 request.form.get('fldCountry'), request.form.get('fldAbbreviation'),
-                 request.form.get('fldCapitalStatus'), request.form.get('fldPopulation'))
-    sql_insert_query = """INSERT INTO tblCitiesImport (fldName,fldLat,fldLong,fldCountry,fldAbbreviation,fldCapitalStatus,fldPopulation) VALUES (%s, %s,%s, %s,%s, %s,%s) """
+    inputData = (request.form.get('person_num'), request.form.get('height'), request.form.get('weight'))
+    sql_insert_query = """INSERT INTO tblPeopleImport (person_num, height, weight) VALUES (%s, %s,%s) """
     cursor.execute(sql_insert_query, inputData)
     mysql.get_db().commit()
     return redirect("/", code=302)
 
-@app.route('/delete/<int:city_id>', methods=['POST'])
+@app.route('/delete/<int:person_num>', methods=['POST'])
 def form_delete_post(city_id):
     cursor = mysql.get_db().cursor()
     sql_delete_query = """DELETE FROM tblCitiesImport WHERE id = %s """
