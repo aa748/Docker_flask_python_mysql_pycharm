@@ -20,7 +20,7 @@ mysql.init_app(app)
 def index():
     user = {'username': 'Mike'}
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblPeopleImport')
+    cursor.execute('SELECT * FROM tblPeopleImport order by person_num ASC')
     result = cursor.fetchall()
     return render_template('index.html', title='Home', user=user, people=result)
 
@@ -28,7 +28,7 @@ def index():
 @app.route('/view/<int:person_num>', methods=['GET'])
 def record_view(person_num):
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblPeopleImport WHERE id=%s', person_num)
+    cursor.execute('SELECT * FROM tblPeopleImport WHERE person_num=%s', person_num)
     result = cursor.fetchall()
     return render_template('view.html', title='View Form', person=result[0])
 
@@ -36,7 +36,7 @@ def record_view(person_num):
 @app.route('/edit/<int:person_num>', methods=['GET'])
 def form_edit_get(person_num):
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblPeopleImport WHERE id=%s', person_num)
+    cursor.execute('SELECT * FROM tblPeopleImport WHERE person_num=%s', person_num)
     result = cursor.fetchall()
     return render_template('edit.html', title='Edit Form', person=result[0])
 
@@ -46,7 +46,7 @@ def form_update_post(person_num):
     cursor = mysql.get_db().cursor()
     inputData = (request.form.get('person_num'), request.form.get('height'), request.form.get('weight'),
                 person_num)
-    sql_update_query = """UPDATE tblPeopleImport t SET t.person_num = %s, t.height = %s, t.weight = %s  WHERE t.id = %s """
+    sql_update_query = """UPDATE tblPeopleImport t SET t.person_num = %s, t.height = %s, t.weight = %s  WHERE t.person_num = %s """
     cursor.execute(sql_update_query, inputData)
     mysql.get_db().commit()
     return redirect("/", code=302)
@@ -68,7 +68,7 @@ def form_insert_post():
 @app.route('/delete/<int:person_num>', methods=['POST'])
 def form_delete_post(person_num):
     cursor = mysql.get_db().cursor()
-    sql_delete_query = """DELETE FROM tblPeopleImport WHERE id = %s """
+    sql_delete_query = """DELETE FROM tblPeopleImport WHERE person_num = %s """
     cursor.execute(sql_delete_query, person_num)
     mysql.get_db().commit()
     return redirect("/", code=302)
