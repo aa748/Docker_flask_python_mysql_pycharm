@@ -101,7 +101,7 @@ def api_add() -> str:
 
 
 @app.route('/api/persons/<int:person_num>', methods=['PUT'])
-def api_edit(city_id) -> str:
+def api_edit(person_num) -> str:
     resp = Response(status=201, mimetype='application/json')
     return resp
 
