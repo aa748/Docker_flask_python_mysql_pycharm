@@ -20,7 +20,7 @@ A project to create a flask framework to serve flask jinja template files and se
 
 ### e. Project running correctly in the browser displaying an updated record added to your home page
 
-#### original:
+#### Original:
 ![update 1](screenshots/update.PNG)
 
 #### Edit
