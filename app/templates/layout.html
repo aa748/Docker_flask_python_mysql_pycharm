@@ -17,12 +17,22 @@
     <title>Welcome to My Site!</title>
     {% endif %}
 <head>
+
+<style>
+    body {
+        background-color: #f0e6fa;
+    }
+    </style>
+
+
+
  <body>
+
 <!-- As a heading -->
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-dark mb-1">
-  <a class="navbar-brand text-light" href="/">{% if user %}{{ user.username }}'s Homepage{% else %}
+  <a class="navbar-brand text-light" href="/">{% if user %}{{ user.username }}'s Person Survey {% else %}
     <title>Welcome to My Homepage</title>
     {% endif %}</a>
   <button aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarNavDropdown" data-toggle="collapse" type="button">
