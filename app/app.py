@@ -100,9 +100,16 @@ def api_add() -> str:
     return resp
 
 
-@app.route('/api/persons/<int:person_num>', methods=['PUT'])
+
+@app.route('/api/v1/cities/<int:person_num>', methods=['PUT'])
 def api_edit(person_num) -> str:
-    resp = Response(status=201, mimetype='application/json')
+    cursor = mysql.get_db().cursor()
+    content = request.json
+    inputData = (content['person_num'], content['Height'], content['Weight'], person_num)
+    sql_update_query = """UPDATE tblPeopleImport t SET t.person_num = %s, t.Height = %s, t.weight = %s WHERE t.person_num = %s """
+    cursor.execute(sql_update_query, inputData)
+    mysql.get_db().commit()
+    resp = Response(status=200, mimetype='application/json')
     return resp
 
 
