@@ -95,8 +95,14 @@ def api_retrieve(person_num) -> str:
     return resp
 
 
-@app.route('/api/persons/', methods=['POST'])
+@app.route('/api/persons', methods=['POST'])
 def api_add() -> str:
+    cursor = mysql.get_db().cursor()
+    content = request.json
+    inputData = (content['person_num'], content['Height'], content['Weight'])
+    sql_add_query = """INSERT INTO tblPeopleImport (person_num, Height, Weight) VALUES (%s, %s, %s) """
+    cursor.execute(sql_add_query, inputData)
+    mysql.get_db().commit()
     resp = Response(status=201, mimetype='application/json')
     return resp
 
