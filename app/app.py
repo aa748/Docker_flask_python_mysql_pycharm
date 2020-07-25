@@ -116,6 +116,10 @@ def api_edit(person_num) -> str:
 
 @app.route('/api/persons/<int:person_num>', methods=['DELETE'])
 def api_delete(person_num) -> str:
+    cursor = mysql.get_db().cursor()
+    sql_delete_query = """DELETE FROM tblPeopleImport WHERE person_num = %s """
+    cursor.execute(sql_delete_query, person_num)
+    mysql.get_db().commit()
     resp = Response(status=210, mimetype='application/json')
     return resp
 
