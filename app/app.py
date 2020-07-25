@@ -94,23 +94,6 @@ def api_retrieve(person_num) -> str:
     return resp
 
 
-@app.route('/api/persons/', methods=['POST'])
-def api_add() -> str:
-    resp = Response(status=201, mimetype='application/json')
-    return resp
-
-
-@app.route('/api/persons/<int:person_num>', methods=['PUT'])
-def api_edit(person_num) -> str:
-    resp = Response(status=201, mimetype='application/json')
-    return resp
-
-
-@app.route('/api/persons/<int:person_num>', methods=['DELETE'])
-def api_delete(person_num) -> str:
-    resp = Response(status=210, mimetype='application/json')
-    return resp
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
