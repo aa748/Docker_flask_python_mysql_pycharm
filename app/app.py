@@ -108,7 +108,7 @@ def api_add() -> str:
 
 
 
-@app.route('/api/persons/edit/<int:person_num>', methods=['PUT'])
+@app.route('/api/persons/<int:person_num>', methods=['PUT'])
 def api_edit(person_num) -> str:
     cursor = mysql.get_db().cursor()
     content = request.json
