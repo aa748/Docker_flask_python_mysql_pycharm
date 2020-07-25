@@ -24,10 +24,10 @@ A project to create a flask framework to serve flask jinja template files and se
 ![update 1](screenshots/update.PNG)
 
 #### Edit
-![update 3](screenshots/update_3.PNG)
+![update 3](screenshots/update_2.PNG)
 
 #### Updated
-![update 2](screenshots/update_2.PNG)
+![update 2](screenshots/update_3.PNG)
 
 ### f. Project running correctly in the browser displaying a deleted record added to your home page
 

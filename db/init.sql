@@ -4,8 +4,8 @@ use peopleData;
 CREATE TABLE IF NOT EXISTS tblPeopleImport (
 
     `person_num` INT,
-    `Height` NUMERIC(6, 4),
-    `Weight` NUMERIC(7, 4),
+    `Height` NUMERIC(5, 2),
+    `Weight` NUMERIC(5, 2),
 
     PRIMARY KEY (`person_num`)
 );
