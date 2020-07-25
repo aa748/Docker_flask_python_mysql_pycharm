@@ -73,6 +73,7 @@ def form_delete_post(person_num):
     mysql.get_db().commit()
     return redirect("/", code=302)
 
+# --------------------------------------------
 
 @app.route('/api/persons', methods=['GET'])
 def api_browse() -> str:
