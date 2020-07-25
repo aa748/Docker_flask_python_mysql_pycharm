@@ -113,7 +113,7 @@ def api_edit(person_num) -> str:
     cursor = mysql.get_db().cursor()
     content = request.json
     inputData = (content['person_num'], content['Height'], content['Weight'], person_num)
-    sql_update_query = """UPDATE tblPeopleImport t SET t.person_num = %s, t.Height = %s, t.weight = %s WHERE t.person_num = %s """
+    sql_update_query = """UPDATE tblPeopleImport p SET p.person_num = %s, p.Height = %s, p.weight = %s WHERE p.person_num = %s """
     cursor.execute(sql_update_query, inputData)
     mysql.get_db().commit()
     resp = Response(status=200, mimetype='application/json')
